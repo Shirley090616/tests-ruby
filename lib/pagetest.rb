@@ -137,3 +137,161 @@ describe "#factorielle" do
   end
 end
 ....................................................................................
+require_relative '../lib/03_basics'
+
+....................................................................................
+describe "Simon dit" do
+    describe "écho" do
+      it "devrait écho hello" do
+        expect(echo("hello")).to eq("hello")
+      end
+  
+      it "devrait écho bye" do
+        expect(echo("bye")).to eq("bye")
+      end
+    end
+  
+    describe "crier" do
+      it "devrait crier hello" do
+        expect(shout("hello")).to eq("HELLO")
+      end
+  
+      it "devrait crier plusieurs mots" do
+        expect(shout("hello world")).to eq("HELLO WORLD")
+      end
+    end
+  
+    describe "répéter" do
+      it "devrait répéter" do
+        expect(repeat("hello")).to eq("hello hello")
+      end
+  
+      # Attends une seconde ! Comment peux-tu faire en sorte que la méthode "répéter"
+      # prenne un *ou* deux arguments ?
+      #
+      # Indice : *valeurs par défaut* https://www.skorks.com/2009/08/method-arguments-in-ruby/
+      it "devrait répéter un certain nombre de fois" do
+        expect(repeat("hello", 3)).to eq("hello hello hello")
+      end
+    end
+  
+    describe "début du mot" do
+      it "retourne la première lettre" do
+        expect(start_of_word("hello", 1)).to eq("h")
+      end
+  
+      it "retourne les deux premières lettres" do
+        expect(start_of_word("Bob", 2)).to eq("Bo")
+      end
+  
+      it "retourne plusieurs premières lettres" do
+        s = "abcdefg"
+        expect(start_of_word(s, 1)).to eq("a")
+        expect(start_of_word(s, 2)).to eq("ab")
+        expect(start_of_word(s, 3)).to eq("abc")
+      end
+    end
+  
+    describe "premier mot" do
+      it "nous dit que le premier mot de 'Hello World' est 'Hello'" do
+        expect(first_word("Hello World")).to eq("Hello")
+      end
+  
+      it "nous dit que le premier mot de 'oh dear' est 'oh'" do
+        expect(first_word("oh dear")).to eq("oh")
+      end
+    end
+  
+    describe "titulariser" do
+      it "met une majuscule à un mot" do
+        expect(titleize("jaws")).to eq("Jaws")
+      end
+  
+      it "met une majuscule à chaque mot (aussi appelé case titre)" do
+        expect(titleize("david copperfield")).to eq("David Copperfield")
+      end
+  
+      it "ne met pas de majuscule aux 'petits mots' dans un titre" do
+        expect(titleize("war and peace")).to eq("War and Peace")
+      end
+  
+      it "met une majuscule aux 'petits mots' au début d'un titre" do
+        expect(titleize("the bridge over the river kwai")).to eq("The Bridge Over the River Kwai")
+      end
+    end
+  end
+......................................................................................
+require_relative '../lib/05_timer'
+
+describe 'chaine_temps' do
+  it "devrait afficher 0 secondes sous la forme 00:00:00" do
+    expect(time_string(0)).to eq("00:00:00")
+  end
+
+  it "devrait afficher 12 secondes sous la forme 00:00:12" do
+    expect(time_string(12)).to eq("00:00:12")
+  end
+
+  it "devrait afficher 66 secondes sous la forme 00:01:06" do
+    expect(time_string(66)).to eq("00:01:06")
+  end
+
+  it "devrait afficher 4000 secondes sous la forme 01:06:40" do
+    expect(time_string(4000)).to eq("01:06:40")
+  end
+end
+......................................................................................
+require_relative '../lib/06_pig_latin'
+
+describe "#translate" do
+
+  it "traduit un mot commençant par une voyelle" do
+    s = translate("apple")
+    expect(s).to eq("appleay")
+  end
+
+  it "traduit un mot commençant par une consonne" do
+    s = translate("banana")
+    expect(s).to eq("ananabay")
+  end
+
+  it "traduit un mot commençant par deux consonnes" do
+    s = translate("cherry")
+    expect(s).to eq("errychay")
+  end
+
+  it "traduit deux mots" do
+    s = translate("eat pie")
+    expect(s).to eq("eatay iepay")
+  end
+
+  it "traduit un mot commençant par trois consonnes" do
+    expect(translate("three")).to eq("eethray")
+  end
+
+  it "compte 'sch' comme un phonème unique" do
+    s = translate("school")
+    expect(s).to eq("oolschay")
+  end
+
+  it "compte 'qu' comme un phonème unique" do
+    s = translate("quiet")
+    expect(s).to eq("ietquay")
+  end
+
+  it "compte 'qu' comme une consonne même lorsqu'il est précédé par une consonne" do
+    s = translate("square")
+    expect(s).to eq("aresquay")
+  end
+
+  it "traduit de nombreux mots" do
+    s = translate("the quick brown fox")
+    expect(s).to eq("ethay ickquay ownbray oxfay")
+  end
+
+  # Test de bonus :
+  # * écris un test affirmant que les mots en majuscules restent en majuscules (mais avec une première lettre différente, bien sûr)
+  # * conserve la ponctuation de la phrase d'origine
+
+end
+......................................................................................
