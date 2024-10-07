@@ -48,3 +48,91 @@ describe "fonctions de conversion de température" do # Décrit un groupe de tes
     end
 
   end
+.....................................................................................
+require_relative '../lib/02_calculator'
+
+describe "addition" do
+  it "additionne 0 et 0" do
+    expect(add(0, 0)).to eq(0)
+  end
+
+  it "additionne 2 et 2" do
+    expect(add(2, 2)).to eq(4)
+  end
+
+  it "additionne des nombres positifs" do
+    expect(add(2, 6)).to eq(8)
+  end
+end
+
+describe "soustraction" do
+  it "soustrait des nombres" do
+    expect(subtract(10, 4)).to eq(6)
+  end
+end
+
+describe "somme" do
+  it "calcule la somme d'un tableau vide" do
+    expect(sum([])).to eq(0)
+  end
+
+  it "calcule la somme d'un tableau contenant un nombre" do
+    expect(sum([7])).to eq(7)
+  end
+
+  it "calcule la somme d'un tableau de deux nombres" do
+    expect(sum([7, 11])).to eq(18)
+  end
+
+  it "calcule la somme d'un tableau de plusieurs nombres" do
+    expect(sum([1, 3, 5, 7, 9])).to eq(25)
+  end
+end
+
+# Écrivons quelques tests !
+# Nous allons te montrer le premier, tu écriras les autres :)
+
+describe "#multiplier" do
+
+  it "multiplie deux nombres" do
+    expect(multiply(3, 4)).to eq(12)
+  end
+
+  it "multiplie deux autres nombres" do
+    expect(multiply(5, 6)).to eq(30)  # un autre test ici, n'oublie pas do end ;)
+  end
+
+  it "multiplie deux autres nombres, dont l'un est 0" do
+    expect(multiply(0, 10)).to eq(0)  # un dernier test, avec 0 dedans
+  end
+
+end
+
+describe "#puissance" do
+  it "élève un nombre à la puissance d'un autre nombre" do
+    expect(power(2, 3)).to eq(8)  # ajout d'un test d'exemple
+  end
+end
+
+# http://fr.wikipedia.org/wiki/Factorielle
+describe "#factorielle" do
+  it "calcule la factorielle de 0" do
+    expect(factorial(0)).to eq(1)
+  end
+
+  it "calcule la factorielle de 1" do
+    expect(factorial(1)).to eq(1)
+  end
+
+  it "calcule la factorielle de 2" do
+    expect(factorial(2)).to eq(2)
+  end
+
+  it "calcule la factorielle de 5" do
+    expect(factorial(5)).to eq(120)
+  end
+
+  it "calcule la factorielle de 10" do
+    expect(factorial(10)).to eq(3628800)
+  end
+end
