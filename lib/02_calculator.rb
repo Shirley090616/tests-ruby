@@ -3,10 +3,10 @@ puts 0 + 0
 puts "add 2 + 2"
 puts 2 + 2
 puts "adds positive numbers"
-def sum(a, b)
+def add(a, b)
     return (a + b)
 end
-puts sum(2, 6)
+puts add(2, 6)
 
 puts "subtract"
 def subtract(a, b)
@@ -62,3 +62,26 @@ end
 array = [1,3,5,7,9] 
 result = sum(array) 
 puts "le resultat est #{result}"
+
+puts "multiplies two numbers"
+def multiply(a, b)
+    return a * b
+  end
+  puts (3 * 4)
+
+  puts "multiplies two numbers"
+def multiply(a, b)
+    return a * b
+  end
+  puts (10 * 3)
+
+  puts "multiplies two numbers"
+def multiply(a, b)
+    return a * b
+  end
+  puts (0 * 9)
+
+  def factorial(n)
+    return 1 if n == 0
+    (1..n).reduce(1, :*)
+  end
